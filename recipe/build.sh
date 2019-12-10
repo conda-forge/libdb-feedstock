@@ -19,9 +19,7 @@ make -j$CPU_COUNT
 make check -j$CPU_COUNT
 make install -j$CPU_COUNT
 
-cd ../lang/cxx/stl
-cp *.h ${PREFIX}/include
+cp ../lang/cxx/stl/*.h ${PREFIX}/include
 
 cd $PREFIX
 find . -type f -name "*.la" -exec rm -rf '{}' \; -print
-
