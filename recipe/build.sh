@@ -22,3 +22,6 @@ make install -j$CPU_COUNT
 
 cd $PREFIX
 find . -type f -name "*.la" -exec rm -rf '{}' \; -print
+
+# debugging
+ls $PREFIX/include/dbstl*
