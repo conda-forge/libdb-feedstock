@@ -48,7 +48,7 @@ test:
 
 about:
   home: http://www.oracle.com/technology/software/products/berkeley-db/index.html
-  license: AGPL-3.0
+  license: AGPL-3.0-only
   license_file: LICENSE
   summary: 'The Berkeley DB embedded database system.'
 
