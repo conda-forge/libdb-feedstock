@@ -36,7 +36,8 @@ build:
 requirements:
   build:
     - make                  # [unix]
-    - {{ compiler('c') }}
+    - {{ compiler('c') }} >19.15  # [win]
+    - {{ compiler('c') }}         # [not win]
     - {{ compiler('cxx') }}
   host:
 
