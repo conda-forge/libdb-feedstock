@@ -12,7 +12,8 @@ source:
     - src_dbinc_atomic.h.patch  # [osx]
 
 build:
-  number: 2002
+  number: 2001
+  skip: True  # [win and vc<14]
 
 # NOTE: on windows, there's a very strange set of build issues.
 #     If you run the VS2008 build, you need to do so as a normal user, or else you get permission errors on the TEMP folder.
