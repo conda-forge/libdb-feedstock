@@ -12,7 +12,7 @@ source:
     - src_dbinc_atomic.h.patch  # [osx]
 
 build:
-  number: 2001
+  number: 2002
   skip: True  # [win and vc<14]
 
 # NOTE: on windows, there's a very strange set of build issues.
@@ -37,7 +37,8 @@ build:
 requirements:
   build:
     - make                  # [unix]
-    - {{ compiler('c') }}
+    - {{ compiler('c') }} >19.15  # [win]
+    - {{ compiler('c') }}         # [not win]
     - {{ compiler('cxx') }}
   host:
 
@@ -48,7 +49,7 @@ test:
 
 about:
   home: http://www.oracle.com/technology/software/products/berkeley-db/index.html
-  license: AGPL-3.0
+  license: AGPL-3.0-only
   license_file: LICENSE
   summary: 'The Berkeley DB embedded database system.'
 
