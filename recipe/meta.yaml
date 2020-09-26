@@ -44,8 +44,7 @@ outputs:
         - {{ pin_subpackage("libdb", max_pin="x.x") }}
     test:
       commands:
-        - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-        - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+        - db_archive -m hello
   # metapackage for old anaconda name (only available on linux/mac)
   - name: db
     requirements:
