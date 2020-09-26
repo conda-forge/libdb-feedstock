@@ -5,7 +5,7 @@ Home: http://www.oracle.com/technology/software/products/berkeley-db/index.html
 
 Package license: AGPL-3.0-only
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: The Berkeley DB embedded database system.
 
@@ -29,36 +29,30 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=528&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libdb-feedstock?branchName=master&jobName=linux&configuration=linux_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libdb-feedstock?branchName=master&jobName=linux&configuration=linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx</td>
+              <td>osx_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=528&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libdb-feedstock?branchName=master&jobName=osx&configuration=osx_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libdb-feedstock?branchName=master&jobName=osx&configuration=osx_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win</td>
+              <td>win_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=528&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libdb-feedstock?branchName=master&jobName=win&configuration=win_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libdb-feedstock?branchName=master&jobName=win&configuration=win_64_" alt="variant">
                 </a>
               </td>
             </tr>
           </tbody>
         </table>
       </details>
-    </td>
-  </tr>
-  <tr>
-    <td>Linux_ppc64le</td>
-    <td>
-      <img src="https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg" alt="ppc64le disabled">
     </td>
   </tr>
 </table>
@@ -68,6 +62,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-db-green.svg)](https://anaconda.org/conda-forge/db) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/db.svg)](https://anaconda.org/conda-forge/db) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/db.svg)](https://anaconda.org/conda-forge/db) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/db.svg)](https://anaconda.org/conda-forge/db) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libdb-green.svg)](https://anaconda.org/conda-forge/libdb) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libdb.svg)](https://anaconda.org/conda-forge/libdb) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libdb.svg)](https://anaconda.org/conda-forge/libdb) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libdb.svg)](https://anaconda.org/conda-forge/libdb) |
 
 Installing libdb
@@ -79,16 +74,16 @@ Installing `libdb` from the `conda-forge` channel can be achieved by adding `con
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `libdb` can be installed with:
+Once the `conda-forge` channel has been enabled, `db, libdb` can be installed with:
 
 ```
-conda install libdb
+conda install db libdb
 ```
 
-It is possible to list all of the versions of `libdb` available on your platform with:
+It is possible to list all of the versions of `db` available on your platform with:
 
 ```
-conda search libdb --channel conda-forge
+conda search db --channel conda-forge
 ```
 
 
@@ -155,6 +150,8 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@mingwandroid](https://github.com/mingwandroid/)
+* [@msarahan](https://github.com/msarahan/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@scopatz](https://github.com/scopatz/)
 
