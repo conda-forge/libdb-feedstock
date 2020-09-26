@@ -1,4 +1,4 @@
-{% set version = "6.1.26" %}
+{% set version = "6.2.32" %}
 
 package:
   name: libdb
@@ -6,14 +6,13 @@ package:
 
 source:
   url: http://download.oracle.com/berkeley-db/db-{{ version }}.tar.gz
-  sha256: dd1417af5443f326ee3998e40986c3c60e2a7cfb5bfa25177ef7cadb2afb13a6
+  sha256: a9c5e2b004a5777aa03510cfe5cd766a4a3b777713406b02809c17c8e0e7a8fb
   patches:
     # fixes atomic issue on clang, see https://trac.macports.org/ticket/53577#no1
     - src_dbinc_atomic.h.patch  # [osx]
 
 build:
-  number: 2002
-  skip: True  # [win and vc<14]
+  number: 0
 
 # NOTE: on windows, there's a very strange set of build issues.
 #     If you run the VS2008 build, you need to do so as a normal user, or else you get permission errors on the TEMP folder.
@@ -29,23 +28,33 @@ build:
 #           Files (x86)\MSBuild\14.0\bin" directory.
 #           [C:\ci\libdb_1537814475445\work\build_windows\VS10\db.vcxproj]
 
-  run_exports:
-    # OK for minor
-    # https://abi-laboratory.pro/?view=timeline&l=libdb
-    - {{ pin_subpackage("libdb", max_pin="x.x") }}
-
 requirements:
   build:
     - make                  # [unix]
-    - {{ compiler('c') }} >19.15  # [win]
-    - {{ compiler('c') }}         # [not win]
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
 
-test:
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+outputs:
+  - name: libdb
+    build:
+      run_exports:
+        # OK for minor
+        # https://abi-laboratory.pro/?view=timeline&l=libdb
+        - {{ pin_subpackage("libdb", max_pin="x.x") }}
+    test:
+      commands:
+        - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+        - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+  # metapackage for old anaconda name (only available on linux/mac)
+  - name: db
+    requirements:
+      build:
+        # compilers are to ensure that variants are captured
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+      run:
+        - {{ pin_subpackage('libdb', exact=True) }}
 
 about:
   home: http://www.oracle.com/technology/software/products/berkeley-db/index.html
@@ -57,3 +66,5 @@ extra:
   recipe-maintainers:
     - ocefpaf
     - scopatz
+    - mingwandroid
+    - msarahan
