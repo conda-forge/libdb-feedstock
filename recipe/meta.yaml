@@ -44,7 +44,8 @@ outputs:
         - {{ pin_subpackage("libdb", max_pin="x.x") }}
     test:
       commands:
-        - db_archive -m hello
+        - test -f ${PREFIX}/lib/libdb${SHLIB_EXT}  # [unix]
+        - if not exist %LIBRARY_BIN%\libdb%SHLIB_EXT%  # [win]
   # metapackage for old anaconda name (only available on linux/mac)
   - name: db
     requirements:
@@ -54,6 +55,9 @@ outputs:
         - {{ compiler('cxx') }}
       run:
         - {{ pin_subpackage('libdb', exact=True) }}
+    test:
+      commands:
+        - db_archive -m hello
 
 about:
   home: http://www.oracle.com/technology/software/products/berkeley-db/index.html
