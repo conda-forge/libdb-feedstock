@@ -20,6 +20,7 @@ cd build_unix
                   --enable-shared \
                   --disable-static \
                   --enable-cxx \
+                  --enable-dbm \
                   --enable-stl
 
 make -j$CPU_COUNT
