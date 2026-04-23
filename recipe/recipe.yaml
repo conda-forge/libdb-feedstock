@@ -1,0 +1,40 @@
+context:
+  version: 5.3.28
+
+package:
+  name: libdb
+  version: ${{ version }}
+
+source:
+  url: https://download.oracle.com/berkeley-db/db-${{ version }}.tar.gz
+  sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
+  patches:
+    - clang-5.3.patch
+    - CVE-2017-10140-cwd-db_config.patch
+    - darwin-mutexes.patch
+    - src_dbinc_db.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - if: unix
+      then:
+        - make
+        - gnuconfig
+
+about:
+  homepage: http://www.oracle.com/technology/software/products/berkeley-db/index.html
+  license: AGPL-3.0-only
+  license_file: LICENSE
+  summary: 'The Berkeley DB embedded database system.'
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
+    - scopatz
+    - mingwandroid
+    - msarahan
